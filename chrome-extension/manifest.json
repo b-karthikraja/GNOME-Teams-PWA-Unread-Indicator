@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "Teams Unread Count for Ubuntu Panel",
+  "version": "0.1.0",
+  "description": "Passes the unread count from the Microsoft Teams PWA to a local Ubuntu GNOME panel indicator.",
+  "permissions": ["nativeMessaging"],
+  "host_permissions": [
+    "https://teams.microsoft.com/*",
+    "https://teams.cloud.microsoft/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://teams.microsoft.com/*",
+        "https://teams.cloud.microsoft/*"
+      ],
+      "js": ["teams-title-monitor.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  }
+}
